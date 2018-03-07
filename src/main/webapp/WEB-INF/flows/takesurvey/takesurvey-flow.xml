@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+							http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<!-- Flow level variable definition SO flow scope -->
+	<var name="survey" class="com.coderovers.makesurvey.domain.Survey" />
+
+<!-- First "state" listed is first executed - unless <on-start> -->
+	<action-state id="addAnswerToSurvey">
+ 		<evaluate expression="surveyControllerHelper.validateSurvey(requestParameters.surveyId)" result="survey" />
+		<transition to="collectQuestionAnswers" />
+		<transition to="InvalidSurveyWarning" on-exception="com.coderovers.makesurvey.exception.InvalidSurveyException" />		
+	</action-state>
+
+	<view-state id="collectQuestionAnswers" view="collectQuestionAnswer" model="survey">
+		<transition on="surveyInfoCollected" to="surveyConfirmation" />
+		<transition on="surveyCancelled" to="cancelSurvey" validate= "false"/>
+	</view-state>
+
+	<view-state id="surveyConfirmation" view="surveyConfirmation">
+		<transition on="surveyConfirmed" to="processSurvey" />
+		<transition on="backToCollectSurveyDetail" to="collectQuestionAnswers" />
+	</view-state>
+	
+	<!-- result="survey.surveyId" saves result of expression -->
+	<action-state id="processSurvey">
+		<evaluate expression="surveyControllerHelper.saveSurvey(survey)"/>
+		<transition to="thankSurveyTaker" />
+	</action-state>
+	
+	<view-state id="InvalidSurveyWarning">
+		<transition to="endState"/>
+	</view-state>
+	
+	<view-state id="thankSurveyTaker" view="thankSurveyTaker">
+		<transition to="endState"/>
+	</view-state>
+
+	<end-state id="endState"/>	
+
+	<end-state id="cancelSurvey" view = "surveyCancelled.jsp"/>		
+	
+	<global-transitions>
+		<transition on = "cancel" to="endState" />
+	</global-transitions>
+
+</flow>

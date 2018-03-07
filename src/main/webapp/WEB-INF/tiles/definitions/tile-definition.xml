@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="baseLayout" template="/WEB-INF/tiles/template/layoutTemplate.jsp">
+		<put-attribute name="title" value="MakeSurvey" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+ 		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
+	</definition>
+
+ 	<definition name="welcome" extends="baseLayout">
+		<put-attribute name="title" value="MakeSurvey" />
+		<put-attribute name="heading" value="MakeSurvey" />
+ 		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
+	
+	<definition name="signup" extends="baseLayout">
+		<put-attribute name="title" value="Signup" />
+		<put-attribute name="heading" value="Signup" />
+		<put-attribute name="body" value="/WEB-INF/views/signup.jsp" />
+	</definition>
+	
+	<definition name="dashboard" extends="baseLayout">
+		<put-attribute name="title" value="MakeSurvey/Welcome" />
+		<put-attribute name="heading" value="MakeSurvey" />
+		<put-attribute name="tagline" value="MakeSurvey" />
+		<put-attribute name="body" value="/WEB-INF/views/survey/dashboard.jsp" />
+	</definition>
+	
+	<definition name="admin" extends="baseLayout">
+		<put-attribute name="title" value="MakeSurvey/Welcome" />
+		<put-attribute name="heading" value="Admin" />
+		<put-attribute name="tagline" value="Admin" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/dashboard.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="Login - makesurvey" />
+		<put-attribute name="heading" value="Login" />
+		<put-attribute name="tagline" value="Enter your Credentials" />
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
+	
+	<definition name="surveyList" extends="baseLayout">
+		<put-attribute name="title" value="Survey List" />
+		<put-attribute name="heading" value="My Survey List" />
+		<put-attribute name="tagline" value="My Survey List" />
+		<put-attribute name="body" value="/WEB-INF/views/survey/surveyList.jsp" />
+	</definition>
+	
+	<definition name="survey" extends="baseLayout">
+		<put-attribute name="title" value="Survey" />
+		<put-attribute name="heading" value="Create New Survey" />
+		<put-attribute name="tagline" value="Create Survey" />
+		<put-attribute name="body" value="/WEB-INF/views/survey/survey.jsp" />
+	</definition>
+	
+	<definition name="collectQuestionAnswer" extends="baseLayout">
+		<put-attribute name="title" value="Survey" />
+		<!-- <put-attribute name="heading" value="Take Survey" /> -->
+		<put-attribute name="tagline" value="Take Survey" />
+		<put-attribute name="body" value="/WEB-INF/flows/takesurvey/collectQuestionAnswer.jsp" />
+	</definition>
+	
+	<definition name="surveyConfirmation" extends="baseLayout">
+		<put-attribute name="title" value="Survey Confirmation" />
+		<!-- <put-attribute name="heading" value="Take Survey" /> -->
+		<put-attribute name="tagline" value="Survey Confirmation" />
+		<put-attribute name="body" value="/WEB-INF/flows/takesurvey/surveyConfirmation.jsp" />
+	</definition>
+	
+	<definition name="general-error" extends="baseLayout">
+		<put-attribute name="title" value="OOPS!!!" />
+		<put-attribute name="heading" value="Exception Occured" />
+ 		<put-attribute name="body" value="/WEB-INF/views/exception/general-error.jsp" />
+	</definition>
+	
+	<definition name="surveytaker" extends="baseLayout">
+		<put-attribute name="title" value="SurveyTaker" />
+		<put-attribute name="heading" value="Survey Taker" />
+		<put-attribute name="tagline" value="Survey Taker" />
+		<put-attribute name="body" value="/WEB-INF/views/surveytaker/dashboard.jsp" />
+	</definition>
+	
+	
+	<definition name="thankSurveyTaker" extends="baseLayout">
+		<put-attribute name="title" value="Success" />
+		<!-- <put-attribute name="heading" value="Success" /> -->
+		<put-attribute name="tagline" value="Survey Success" />
+		<put-attribute name="body" value="/WEB-INF/views/surveytaker/thankSurveyTaker.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="about" extends="baseLayout">
+		<put-attribute name="title" value="About MakeSurvey" />
+		<put-attribute name="heading" value="About MakeSurvey" />
+ 		<put-attribute name="body" value="/WEB-INF/views/about.jsp" />
+	</definition>
+	
+	<definition name="contact" extends="baseLayout">
+		<put-attribute name="title" value="Contact MakeSurvey" />
+		<put-attribute name="heading" value="Contact MakeSurvey" />
+ 		<put-attribute name="body" value="/WEB-INF/views/contact.jsp" />
+	</definition>
+	 	
+</tiles-definitions>
